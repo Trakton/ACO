@@ -1,0 +1,6 @@
+[submodule "S3M"]
+	path = S3M
+	url = https://github.com/BorgwardtLab/S3M
+[submodule "myra"]
+	path = myra
+	url = https://github.com/febo/myra
