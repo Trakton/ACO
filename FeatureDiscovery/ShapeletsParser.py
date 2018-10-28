@@ -1,10 +1,11 @@
 import json
+import sys
 
-with open('data/shapelets.json') as f:
+with open(sys.argv[1]) as f:
     data = json.load(f)
 
 array = [x["shapelet"] for x in data["shapelets"]]
 
-with open('data/shapelets_parsed.csv', 'w') as f:
+with open(sys.argv[2], 'w') as f:
     f.writelines(["%s\n" % ','.join(map(str, x))  for x in array])
 

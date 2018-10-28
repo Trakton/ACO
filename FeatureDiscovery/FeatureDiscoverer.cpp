@@ -46,13 +46,13 @@ vector<vector<double>> findFeatures(const vector<vector<double>> &shapelets, con
     return features;
 }
 
-int main(){
-    vector<vector<double>> shapelets = readCsv("data/shapelets_parsed.csv");
-    vector<vector<double>> dataset = readCsv("data/original_dataset.csv");
+int main(int argc, char* argv[]){
+    vector<vector<double>> shapelets = readCsv(argv[1]);
+    vector<vector<double>> dataset = readCsv(argv[2]);
     vector<vector<double>> features = findFeatures(shapelets, dataset);
 
     ofstream out;
-    out.open ("data/featured_dataset.csv");
+    out.open (argv[3]);
 
     for(int i = 0; i < features.size(); i++){
         for(int j = 0; j < features[i].size(); j++){
