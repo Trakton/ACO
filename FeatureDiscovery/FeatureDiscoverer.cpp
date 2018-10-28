@@ -17,21 +17,23 @@ vector<vector<double>> readCsv(string path)
     return data;
 }
 
-int shapeletOccurs(const vector<double> &shapelet, const vector<double> &row){
+double shapeletOccurs(const vector<double> &shapelet, const vector<double> &row){
+double gDist = INT_MAX;
    for(int i = 1; i + shapelet.size() < row.size(); i++){
        double dist = 0;
        for(int j = 0; j < shapelet.size(); j++){
            dist += (shapelet[j]-row[i+j])*(shapelet[j]-row[i+j]);
        }
-        if(dist < 5.0) return 1;
+       gDist = min(gDist, dist);
+        
    }
-   return 0;
+   return gDist;
 }
 
-vector<vector<int>> findFeatures(const vector<vector<double>> &shapelets, const vector<vector<double>> &dataset){
+vector<vector<double>> findFeatures(const vector<vector<double>> &shapelets, const vector<vector<double>> &dataset){
     int n = dataset.size();
     int m = shapelets.size();
-    vector<vector<int>> features(n, vector<int>(m+1, 0));
+    vector<vector<double>> features(n, vector<double>(m+1, 0));
 
     for(int i = 0; i < n; i++){
         features[i][0] = dataset[i][0];
@@ -47,13 +49,17 @@ vector<vector<int>> findFeatures(const vector<vector<double>> &shapelets, const 
 int main(){
     vector<vector<double>> shapelets = readCsv("data/shapelets_parsed.csv");
     vector<vector<double>> dataset = readCsv("data/original_dataset.csv");
-    vector<vector<int>> features = findFeatures(shapelets, dataset);
+    vector<vector<double>> features = findFeatures(shapelets, dataset);
+
+    ofstream out;
+    out.open ("data/featured_dataset.csv");
 
     for(int i = 0; i < features.size(); i++){
         for(int j = 0; j < features[i].size(); j++){
-            printf(" %d", features[i][j]);
+            if(j > 0) out << ",";
+            out << features[i][j];
         }
-        printf("\n");
+        out << "\n";
     }
 
     return 0;
