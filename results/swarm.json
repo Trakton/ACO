@@ -1,0 +1,47 @@
+"C:\Program Files\Java\jdk1.8.0_111\bin\java" -Didea.launcher.port=7533 "-Didea.launcher.bin.path=C:\Program Files (x86)\JetBrains\IntelliJ IDEA 2016.2.5\bin" -Dfile.encoding=UTF-8 -classpath "E:\Documents\GitHub\myra\target\classes;C:\Program Files\Java\jdk1.8.0_111\lib\ant-javafx.jar;C:\Program Files\Java\jdk1.8.0_111\lib\dt.jar;C:\Program Files\Java\jdk1.8.0_111\lib\javafx-mx.jar;C:\Program Files\Java\jdk1.8.0_111\lib\jconsole.jar;C:\Program Files\Java\jdk1.8.0_111\lib\packager.jar;C:\Program Files\Java\jdk1.8.0_111\lib\sa-jdi.jar;C:\Program Files\Java\jdk1.8.0_111\lib\tools.jar;C:\Program Files (x86)\JetBrains\IntelliJ IDEA 2016.2.5\lib\idea_rt.jar" com.intellij.rt.execution.application.AppMain myra.classification.rule.impl.AntMiner -f data/breast_cancer.csv
+Ant-Miner rule induction [NO-GIT]                                Sun Oct 28 2018
+_________________________________                                       22:36:46
+
+Training file: data/breast_cancer.csv
+
+[Runtime default values]
+	-s 1540777006307
+	-c 60
+	-i 1500
+	-m 10
+	-u 10
+	-x 10
+	-p greedy
+	-r sen_spe
+	-h gain
+
+Relation: swarm
+Instances: 370
+Attributes: 100
+Classes: 2
+Random seed: 1540777006307
+
+=== Discovered Model ===
+
+IF x2 > 0.010846 AND x51 > 0.015174 THEN 2
+IF x1 <= 0.036293 AND x63 <= 0.018092 THEN 1
+IF x88 > 0.045629 THEN 2
+IF <empty> THEN 1
+
+Number of rules: 4
+Total number of terms: 5
+Average number of terms: 1.25
+
+Classification accuracy on training set: 0.962162 (96.22%)
+
+>>> Rule coverage:
+
+#   1   2  <-- class 
+1   6 215 
+2 117   2 
+3   0  15 
+4   9   6  (default rule)
+
+Running time (seconds): 6.38
+
+Process finished with exit code 0
